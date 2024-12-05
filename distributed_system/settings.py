@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'users',
+    'products',
+    'orders',
 ]
 
 MIDDLEWARE = [
@@ -76,8 +79,20 @@ WSGI_APPLICATION = 'distributed_system.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+        'NAME': BASE_DIR / 'db.sqlite3',  # Default database
+    },
+    'users': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'users.db',
+    },
+    'products': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'products.db',
+    },
+    'orders': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'orders.db',
+    },
 }
 
 
@@ -99,6 +114,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+DATABASE_ROUTERS = ['distributed_system.database_router.DatabaseRouter']
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
